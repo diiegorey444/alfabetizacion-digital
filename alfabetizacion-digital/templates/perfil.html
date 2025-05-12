@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Perfil{% endblock %}
+{% block content %}
+<div class="container text-center">
+    <h2 class="mb-4">Mi Perfil</h2>
+    <p class="lead">Nombre de usuario:</p>
+    <div class="alert alert-info fs-4">
+        {{ username }}
+    </div>
+    <div class="container text-center">
+        <a href="/dashboard" class="btn btn-secondary btn-lg btn-volver">Volver al inicio</a>
+    </div> 
+</div>
+{% endblock %}

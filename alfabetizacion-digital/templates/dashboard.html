@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+<div class="text-center">
+    <h1 class="mb-3">¡Hola {{ username }}! 👋</h1>
+    <p class="lead">Bienvenido a tu plataforma de alfabetización digital.</p>
+    <hr>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Clases</h5>
+                    <p class="card-text">Aprende paso a paso desde lo más básico.</p>
+                    <a href="{{ url_for('clases') }}" class="btn btn-primary">Entrar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Recursos</h5>
+                    <p class="card-text">Guías, PDFs y enlaces útiles.</p>
+                    <a href="{{ url_for('recursos') }}" class="btn btn-primary">Ver</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Juegos</h5>
+                    <p class="card-text">Refuerza lo aprendido jugando.</p>
+                    <a href="{{ url_for('juegos') }}" class="btn btn-primary">Jugar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Perfil</h5>
+                    <p class="card-text">Revisa tus datos y progreso.</p>
+                    <a href="{{ url_for('perfil') }}" class="btn btn-primary">Mi perfil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

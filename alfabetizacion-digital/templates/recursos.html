@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Recursos{% endblock %}
+{% block content %}
+<div class= "container text-center">
+    <h2 class="mb-4">Recursos Educativos</h2>
+
+    <!-- Imagen subida -->
+    <div class="mb-5">
+        <h4>Aprendiendo en Familia</h4>
+        <img src="{{ url_for('static', filename='images/OIP.jpg') }}" alt="Aprendiendo en familia" class="img-fluid rounded shadow-sm">
+    </div>
+
+    <!-- Video de YouTube -->
+    <div class="mb-5">
+        <h4>Video Tutorial</h4>
+        <div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed/DXk4cud2DfI" title="Tutorial de Computación Básica" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="container text-center">
+        <a href="/dashboard" class="btn btn-secondary btn-lg btn-volver">Volver al inicio</a>
+    </div>
+    
+</div>
+</clas>
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block title %}Juegos{% endblock %}
+{% block content %}
+<div class="container text-center">
+    <h2 class="mb-4">Juego: Familiarizarse con los Dispositivos</h2>
+    <p class="lead" id="contador">Aciertos: 0 de 5</p>
+
+    <!-- Pregunta 1 -->
+    <div class="card p-3 mb-4 pregunta">
+        <h4>1. ¿Cuál es el dispositivo principal para ingresar texto en una computadora?</h4>
+        <div class="mt-3">
+            <button class="btn btn-outline-primary mb-2" onclick="respuesta(this, true)">Teclado</button><br>
+            <button class="btn btn-outline-primary mb-2" onclick="respuesta(this, false)">Ratón</button><br>
+            <button class="btn btn-outline-primary mb-2" onclick="respuesta(this, false)">Monitor</button>
+        </div>
+    </div>
+
+    <!-- Pregunta 2 -->
+    <div class="card p-3 mb-4 pregunta">
+        <h4>2. ¿Qué dispositivo muestra la información visual al usuario?</h4>
+        <div class="mt-3">
+            <button class="btn btn-outline-primary mb-2" onclick="respuesta(this, true)">Monitor</button><br>
+            <button class="btn btn-outline-primary mb-2" onclick="respuesta(this, false)">Ratón</button><br>
+            <button class="btn btn-outline-primary mb-2" onclick="respuesta(this, false)">Teclado</button>
+        </div>
+    </div>
+
+    <!-- Pregunta 3 -->
+    <div class="card p-3 mb-4 pregunta">
+        <h4>3. ¿Qué componente permite navegar y seleccionar en la pantalla?</h4>
+        <div class="mt-3">
+            <button class="btn btn-outline-primary mb-2" onclick="respuesta(this, true)">Ratón</button><br>
+            <button class="btn btn-outline-primary mb-2" onclick="respuesta(this, false)">CPU</button><br>
+            <button class="btn btn-outline-primary mb-2" onclick="respuesta(this, false)">Memoria RAM</button>
+        </div>
+    </div>
+
+    <!-- Pregunta 4 -->
+    <div class="card p-3 mb-4 pregunta">
+        <h4>4. ¿Cuál de estos dispositivos es portátil y combina todas las funciones básicas?</h4>
+        <div class="mt-3">
+            <button class="btn btn-outline-primary mb-2" onclick="respuesta(this, true)">Teléfono Móvil</button><br>
+            <button class="btn btn-outline-primary mb-2" onclick="respuesta(this, false)">Teclado Inalámbrico</button><br>
+            <button class="btn btn-outline-primary mb-2" onclick="respuesta(this, false)">Monitor de Escritorio</button>
+        </div>
+    </div>
+
+    <!-- Pregunta 5 -->
+    <div class="card p-3 mb-4 pregunta">
+        <h4>5. ¿Qué dispositivo usamos para hacer llamadas y enviar mensajes?</h4>
+        <div class="mt-3">
+            <button class="btn btn-outline-primary mb-2" onclick="respuesta(this, true)">Teléfono Móvil</button><br>
+            <button class="btn btn-outline-primary mb-2" onclick="respuesta(this, false)">Disco duro</button><br>
+            <button class="btn btn-outline-primary mb-2" onclick="respuesta(this, false)">Memoria USB</button>
+        </div>
+    </div>
+
+    <div id="mensaje-final" class="mt-5 fs-3 text-success"></div>
+</div>
+
+<!-- Sonidos locales (sin bloqueo) -->
+<audio id="sonido-correcto" preload="auto">
+    <source src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" type="audio/ogg">
+</audio>
+<audio id="sonido-incorrecto" preload="auto">
+    <source src="https://actions.google.com/sounds/v1/cartoon/boing.ogg" type="audio/ogg">
+</audio>
+
+<script>
+let aciertos = 0;
+let preguntasRespondidas = 0;
+
+function respuesta(boton, correcta) {
+    const sonidoCorrecto = document.getElementById('sonido-correcto');
+    const sonidoIncorrecto = document.getElementById('sonido-incorrecto');
+
+    if (correcta) {
+        aciertos++;
+        boton.classList.remove('btn-outline-primary');
+        boton.classList.add('btn-success');
+        boton.classList.add('animate__animated', 'animate__pulse');
+        sonidoCorrecto.play();
+    } else {
+        boton.classList.remove('btn-outline-primary');
+        boton.classList.add('btn-danger');
+        sonidoIncorrecto.play();
+    }
+
+    // Desactivar todos los botones de esta pregunta
+    let botones = boton.parentElement.querySelectorAll('button');
+    botones.forEach(btn => btn.disabled = true);
+
+    preguntasRespondidas++;
+    document.getElementById('contador').innerText = `Aciertos: ${aciertos} de 5`;
+
+    if (preguntasRespondidas === 5) {
+        mostrarMensajeFinal();
+    }
+}
+
+function mostrarMensajeFinal() {
+    const mensaje = document.getElementById('mensaje-final');
+    if (aciertos === 5) {
+        mensaje.innerHTML = "🎉 ¡Felicidades, acertaste todas! 🎉";
+    } else {
+        mensaje.innerHTML = `Terminaste el juego con ${aciertos} aciertos de 5. ¡Sigue practicando! 💪`;
+    }
+}
+</script>
+
+<!-- Animaciones de animate.css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<div class="container text-center">
+    <a href="/dashboard" class="btn btn-secondary btn-lg btn-volver">Volver al inicio</a>
+</div>
+{% endblock %}
