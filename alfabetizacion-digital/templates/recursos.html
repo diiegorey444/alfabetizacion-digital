@@ -1,26 +1,64 @@
 {% extends "base.html" %}
 {% block title %}Recursos{% endblock %}
+
 {% block content %}
-<div class= "container text-center">
-    <h2 class="mb-4">Recursos Educativos</h2>
+<style>
+  .imagen-recurso {
+    width: 100%;
+    height: 500px;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+</style>
 
-    <!-- Imagen subida -->
-    <div class="mb-5">
-        <h4>Aprendiendo en Familia</h4>
-        <img src="{{ url_for('static', filename='images/OIP.jpg') }}" alt="Aprendiendo en familia" class="img-fluid rounded shadow-sm">
+<div class="container text-center">
+  <h2 class="mb-4">Recursos Educativos</h2>
+
+  <div class="row justify-content-center">
+    <!-- Recurso 1 -->
+    <div class="col-12 col-md-6 col-lg-4 mb-4">
+      <h5>Aprendiendo en Familia</h5>
+      <img src="{{ url_for('static', filename='images/OIP.jpg') }}" alt="Aprendiendo en familia" class="imagen-recurso">
     </div>
 
-    <!-- Video de YouTube -->
-    <div class="mb-5">
-        <h4>Video Tutorial</h4>
-        <div class="ratio ratio-16x9">
-            <iframe src="https://www.youtube.com/embed/DXk4cud2DfI" title="Tutorial de Computación Básica" allowfullscreen></iframe>
-        </div>
+    <!-- Recurso 2 -->
+    <div class="col-12 col-md-6 col-lg-4 mb-4">
+      <h5>Correcto uso del Celular</h5>
+      <img src="{{ url_for('static', filename='images/Info.jpg') }}" alt="Correcto uso del Celular" class="imagen-recurso">
     </div>
-    <div class="container text-center">
-        <a href="/dashboard" class="btn btn-secondary btn-lg btn-volver">Volver al inicio</a>
+
+    <!-- Recurso 3 -->
+    <div class="col-12 col-md-6 col-lg-4 mb-4">
+      <h5>Buen uso del Internet</h5>
+      <img src="{{ url_for('static', filename='images/internet.jpg') }}" alt="Buen uso del internet" class="imagen-recurso">
     </div>
-    
+
+    <!-- Recurso 4 -->
+    <div class="col-12 col-md-6 col-lg-4 mb-4">
+      <h5>Tecnología en la educación</h5>
+      <img src="{{ url_for('static', filename='images/Tip.jpg') }}" alt="Tecnología en la educación" class="imagen-recurso">
+    </div>
+
+    <!-- Recurso 5 -->
+    <div class="col-12 col-md-6 col-lg-4 mb-4">
+      <h5>Datos importantes</h5>
+      <img src="{{ url_for('static', filename='images/Datos.jpg') }}" alt="Datos importantes" class="imagen-recurso">
+    </div>
+  </div>
+
+  <!-- Video -->
+  <div class="mb-5">
+    <h4>Video Tutorial</h4>
+    <div class="ratio ratio-16x9">
+      <iframe src="https://www.youtube.com/embed/pwUK9QDtt-I"
+              title="Tutorial de Computación Básica"
+              allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <a href="/dashboard" class="btn btn-secondary btn-lg btn-volver">Volver al inicio</a>
+  </div>
 </div>
-</clas>
 {% endblock %}
